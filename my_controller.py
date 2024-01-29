@@ -49,8 +49,8 @@ def is_gray(r, g, b):
     return abs(r - g) < thrs and abs(r - b) < thrs and abs(g - b) < thrs
 
 
-def crop_box_image(path:str):
-    image = cv2.imread(path)
+def crop_box_image(imageArray:np.ndarray):
+    image = imageArray
 
     for i in range(image.shape[0]):
         for j in range(image.shape[1]):
@@ -106,7 +106,7 @@ def crop_box_image(path:str):
                 max_x = max(max_x, x)
                 max_y = max(max_y, y)
             cnts.append(c)
-    original = cv2.imread(path)
+    original = imageArray
     return original[min_y:max_y, min_x:max_x]
 
 
